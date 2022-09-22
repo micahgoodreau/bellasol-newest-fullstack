@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build": "nx build api",
+    "start": "node dist/apps/api/main",
     "start:dev": "env-cmd -f .local.env concurrently --kill-others \"npm:db:up\" \"npm:dev:api\" \"npm:dev:web\"  \"npm:gen:gql\"",
     "dev:api": "nx serve api",
     "dev:web": "nx serve web",
