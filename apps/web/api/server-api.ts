@@ -10,7 +10,7 @@ type SsrContext = GetServerSidePropsContext
 
 export async function serverQuery<
   QueryResult = { [key: string]: unknown },
-  Variables = { [key: string]: unknown }
+  Variables extends object = { [key: string]: unknown }
 >(
   query: SsrQuery<QueryResult, Variables>,
   variables?: Variables,
