@@ -9,6 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter())
   const globalPrefix = 'graphql'
   const port = process.env.PORT || 3333
+  const host = process.env.API_HOST || 'localhost'
   const isProduction = process.env.NODE_ENV === 'production'
 
   const developmentContentSecurityPolicy = {
@@ -38,7 +39,7 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true }
     })
   )
-  await app.listen(port)
+  await app.listen(port, host)
 
   Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`)
   Logger.log(`🚀 Application is running on: http://localhost:${port}/graphiql`)
