@@ -2,7 +2,7 @@ import { Logger, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
-//import helmet from 'helmet'
+import helmet from 'helmet'
 import fastifyCookie from '@fastify/cookie'
 
 async function bootstrap() {
@@ -20,13 +20,12 @@ async function bootstrap() {
 */
   await app.register(fastifyCookie, { secret: process.env.COOKIE_SECRET })
 
-  /*
   app.use(
     helmet({
-      contentSecurityPolicy: isProduction ? undefined : developmentContentSecurityPolicy
+      contentSecurityPolicy: false // isProduction ? undefined : developmentContentSecurityPolicy
     })
   )
-*/
+
   app.enableCors({
     origin: true,
     credentials: true
