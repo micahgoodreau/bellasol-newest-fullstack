@@ -16,7 +16,7 @@ const HTTP_ONLY_COOKIE: CookieSerializeOptions = {
 
 const USERS_COOKIE: CookieSerializeOptions = {
   maxAge: Number(jwtExpiresSecond), // cookie lives same amount of time as jwt
-  path: '/'
+  domain: 'https://bellasol-363461331-micahgoodreau1.vercel.app'
 }
 
 @Injectable()
