@@ -11,7 +11,7 @@ const HTTP_ONLY_COOKIE: CookieSerializeOptions = {
   maxAge: Number(jwtExpiresSecond), // cookie lives same amount of time as jwt
   httpOnly: true,
   signed: true,
-  domain
+  path: '/'
 }
 
 const USERS_COOKIE: CookieSerializeOptions = {
@@ -29,6 +29,7 @@ export class SetAuthGuard extends AuthGuard('local') {
     const context_ = GqlExecutionContext.create(context)
     const request = context_.getContext()
     // should be the same name as args
+    // const { userId } = request.session.userId
     request.body = context_.getArgs().loginInput
     return request
   }
