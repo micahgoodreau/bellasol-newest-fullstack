@@ -16,7 +16,7 @@ const HTTP_ONLY_COOKIE: CookieSerializeOptions = {
 
 const USERS_COOKIE: CookieSerializeOptions = {
   maxAge: Number(jwtExpiresSecond), // cookie lives same amount of time as jwt
-  domain
+  path: '/'
 }
 
 @Injectable()
