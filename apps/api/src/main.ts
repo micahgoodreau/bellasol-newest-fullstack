@@ -9,20 +9,19 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter())
   const globalPrefix = 'graphql'
   const port = process.env.PORT || 3333
-  //const isProduction = process.env.NODE_ENV === 'production'
+  const isProduction = process.env.NODE_ENV === 'production'
 
-  /*
   const developmentContentSecurityPolicy = {
     directives: {
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://unpkg.com/']
     }
   }
-*/
+
   await app.register(fastifyCookie, { secret: process.env.COOKIE_SECRET })
 
   app.use(
     helmet({
-      contentSecurityPolicy: false // isProduction ? undefined : developmentContentSecurityPolicy
+      contentSecurityPolicy: isProduction ? undefined : developmentContentSecurityPolicy
     })
   )
 
