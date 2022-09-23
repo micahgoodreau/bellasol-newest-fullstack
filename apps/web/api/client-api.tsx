@@ -16,7 +16,7 @@ export const ssrCache = ssrExchange({
 })
 
 export const clientApi = createClient({
-  url: `http://${process.env.API_HOST}:3333/graphql`,
+  url: 'https://bellasol-api.herokuapp.com/graphql', //`http://${process.env.API_HOST}:3333/graphql`,
   fetchOptions: { credentials: 'include' },
   exchanges: [
     cacheExchange,

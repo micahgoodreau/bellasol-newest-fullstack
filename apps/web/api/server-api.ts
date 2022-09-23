@@ -19,7 +19,7 @@ export async function serverQuery<
   const ssrCache = ssrExchange({ isClient: false })
   const cookie = context.req.headers.cookie
   const serverClient = createClient({
-    url: `http://${process.env.API_HOST}:3333/graphql`,
+    url: 'https://bellasol-api.herokuapp.com/graphql', //`http://${process.env.API_HOST}:3333/graphql`,
     fetchOptions: { headers: { cookie } },
     exchanges: [ssrCache, fetchExchange]
   })
